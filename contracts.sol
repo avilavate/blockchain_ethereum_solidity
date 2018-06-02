@@ -17,4 +17,9 @@ contract AuctionHouse {
     function _createItem(string _name, uint _price, uint _itemId) private {
         items.push(Item(_name, _price, _itemId));
     }
+
+    function addItem(string _name, uint _price) public {
+        uint itemId = _generateItemId(_name);
+        _createItem(_name,_price,itemId);
+    }
 }
