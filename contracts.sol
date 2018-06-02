@@ -30,10 +30,3 @@ contract AuctionHouse {
         _createItem(_name, _price, itemId);
     }
 }
-
-//1. create a contract BidChain
-//2. it should inherit AuctionHouse
-
-contract BidChain is AuctionHouse {
-    
-}
