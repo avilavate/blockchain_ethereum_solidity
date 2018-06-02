@@ -15,12 +15,12 @@ contract AuctionHouse {
 
     mapping (uint => address) itemToOwnerMapping;
     
-    function _generateItemId(string _str) private view returns (uint) {
+    function _generateItemId(string _str) pure returns (uint) {
         uint hashOfName = uint(keccak256(_str));
         return hashOfName;
     }
 
-    function _createItem(string _name, uint _price, uint _itemId) private {
+    function _createItem(string _name, uint _price, uint _itemId) internal {
         items.push(Item(_name, _price, _itemId, ItemState.initialized));
         itemToOwnerMapping[_itemId] = msg.sender;
     }
