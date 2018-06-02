@@ -33,3 +33,7 @@ contract AuctionHouse {
 
 //1. create a contract BidChain
 //2. it should inherit AuctionHouse
+
+contract BidChain is AuctionHouse {
+    
+}
