@@ -1,4 +1,5 @@
-# blockchain_ethereum_solidity
+# Private Ethereum Blockchain Biding Smart Contract
+
 ## Blockchain: Ethereum Solidity Smart Contract -ActionHouse Biding War
 
 ### ActionHouse Biding War-
