@@ -15,7 +15,7 @@ contract AuctionHouse {
 
     mapping (uint => address) itemToOwnerMapping;
     
-    function _generateItemId(string _str) pure returns (uint) {
+    function _generateItemId(string _str) internal pure returns (uint) {
         uint hashOfName = uint(keccak256(_str));
         return hashOfName;
     }
