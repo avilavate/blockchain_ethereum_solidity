@@ -4,11 +4,16 @@ import "./BidChain.sol";
 
 contract BidHelper is BidChain {
     
-    function flagUser(uint _itemId, address _flaggedUser) public {
+    modifier itemOwner(uint _itemId) {
         require(msg.sender == itemToOwnerMapping[_itemId]);
+        _;
+    }
+
+    function flagUser(uint _itemId, address _flaggedUser) public itemOwner(_itemId) {
         require(itemToBiddingMap[_itemId].initialized == true);
         itemToBiddingMap[_itemId].flaggedUsers[_flaggedUser] = true;
     }
+    
     
     //1. create a helper function, getItemDetail, which returns itemName, basePrice and state
     function getItemDetail(uint _itemId) view public returns(string, uint, ItemState) {
