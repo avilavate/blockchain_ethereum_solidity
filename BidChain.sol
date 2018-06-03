@@ -19,13 +19,12 @@ contract BidChain is AuctionHouse {
         itemToBiddingMap[_itemId] = biddingData(_endTime, 0, msg.sender, true);
     }
     
-    function flagUser(uint _itemId, address _flaggedUser) public {
-        require(msg.sender == itemToOwnerMapping[_itemId]);
-        require(itemToBiddingMap[_itemId].initialized == true);
-        itemToBiddingMap[_itemId].flaggedUsers[_flaggedUser] = true;
+    function placeBid(uint _itemId, uint _bidAmount) public {
+        require(now < itemToBiddingMap[_itemId].endTime);
+        require(_bidAmount > itemToBiddingMap[_itemId].highestBid);
+        itemToBiddingMap[_itemId].highestBid = _bidAmount;
+        itemToBiddingMap[_itemId].bidder = msg.sender;
     }
-    
-    //1. create function placeBid
     
     function transferItem(uint _itemId, address _newOwner) public {
         require(msg.sender == itemToOwnerMapping[_itemId]);
