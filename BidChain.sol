@@ -35,6 +35,13 @@ contract BidChain is AuctionHouse {
     
     function transferItem(uint _itemId, address _newOwner) public {
         require(msg.sender == itemToOwnerMapping[_itemId]);
+        //1. add another require condition to check that item should not be transferrable before it is end time
+        require(now > itemToBiddingMap[_itemId].endTime);
         itemToOwnerMapping[_itemId] = _newOwner;
+        ownerToItemCount[_newOwner]++;
+        ownerToItemCount[msg.sender]--;
+        
+        //2. transfer highestBid amount to the msg.sender as he is the owner of the item and he has transferred it to the new owner
+        msg.sender.transfer(itemToBiddingMap[_itemId].highestBid);
     }
 }
