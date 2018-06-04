@@ -13,6 +13,7 @@ A solidity powered ActionHouse simulation executed on private ethereum blockchai
                     + Who can access the item collection and make bid.
                     + Decide the bid ammount
                     + When the biding process will end in time (future)
+                    +a newly placed bid 
             - Smart Contract make sure the highest bidder gets the item.
 
        - Bidder Can-

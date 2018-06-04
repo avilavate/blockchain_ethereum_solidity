@@ -45,5 +45,16 @@ contract BidChain is AuctionHouse {
         require(msg.sender == itemToOwnerMapping[_itemId]);
         itemToOwnerMapping[_itemId] = _newOwner;
     }
+
+    function getItemByOwner() view external returns (uint[]) {
+        uint[] memory itemIdArray = new uint[](ownerToItemCount[msg.sender]);
+	    //1. define uint counter here
+		
+		//2. run a for loop from uint i = 0 to items.length
+		//3. inside the loop, check owner of itemId
+		//4. when owner is same as msg.sender, add itemId to the itemIdArray
+		
+        return itemIdArray;
+    }
 }
     
