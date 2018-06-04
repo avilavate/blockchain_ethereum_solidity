@@ -14,6 +14,7 @@ contract AuctionHouse {
     Item[] public items;
 
     mapping (uint => address) itemToOwnerMapping;
+    mapping (address => uint) ownerToItemCount;
     
     function _generateItemId(string _str) internal pure returns (uint) {
         uint hashOfName = uint(keccak256(_str));
@@ -23,6 +24,7 @@ contract AuctionHouse {
     function _createItem(string _name, uint _price, uint _itemId) internal {
         items.push(Item(_name, _price, _itemId, ItemState.initialized));
         itemToOwnerMapping[_itemId] = msg.sender;
+        ownerToItemCount[msg.sender]++;
     }
 
     function addItem(string _name, uint _price) public {
